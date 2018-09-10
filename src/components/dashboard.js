@@ -4,9 +4,9 @@ import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
 
 export class Dashboard extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchProtectedData());
-  }
+  // componentDidMount() {
+  //   this.props.dispatch(fetchProtectedData());
+  // }
 
   render() {
     return (
@@ -14,10 +14,7 @@ export class Dashboard extends React.Component {
         <div className="dashboard-username">
                     Username: {this.props.username}
         </div>
-        <div className="dashboard-name">Welcome to ¡Hablamos!,{this.props.name}</div>
-        <div className="dashboard-protected-data">
-                    Protected data: {this.props.protectedData}
-        </div>
+        <div className="dashboard-name">Welcome to ¡Hablamos! {this.props.name}</div>
       </div>
     );
   }
