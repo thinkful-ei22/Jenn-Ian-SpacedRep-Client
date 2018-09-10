@@ -27,6 +27,9 @@
         padding-left: 1.04166666%;
         padding-right: 1.04166666%;
     }
+    .word-display {
+     
+    }
   }
 @media only screen /* tablet */
   and (min-width: 481px) 
@@ -56,6 +59,9 @@
         float: left;
         padding-left: 1.04166666%;
         padding-right: 1.04166666%;
+    }
+    .word-display {
+
     }
   }
 @media only screen /* computer */
@@ -101,5 +107,30 @@
     /* 6 columns - each 1/6 page */
     .col-6{
         width: 16.666667%;
+    }
+    .word-display {
+        border: solid;
+        padding: 15px;
+        margin-left: 33.33333%;
+        text-align: center;
+    }
+    .dashboard-name{
+        text-align:center;
+    }
+    .welcome{
+
+    }
+    .spanish-word{
+        text-align: center;
+        margin-top: 0px;
+    }
+    .answer{
+        height: 35px;
+        width: 90%;
+    }
+    .submit-answer{
+        margin-top: 10px;
+        border-radius: 0%;
+        font-size: 14px;
     }
   }
