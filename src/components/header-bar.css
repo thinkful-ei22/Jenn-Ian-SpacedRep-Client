@@ -27,8 +27,8 @@
         padding-left: 1.04166666%;
         padding-right: 1.04166666%;
     }
-    .home {
-
+    .header-bar {
+        text-align:center;
     }
   }
 @media only screen /* tablet */
@@ -60,8 +60,8 @@
         padding-left: 1.04166666%;
         padding-right: 1.04166666%;
     }
-    .home {
-
+    .header-bar {
+        text-align:center;
     }
   }
 @media only screen /* computer */
@@ -108,7 +108,7 @@
     .col-6{
         width: 16.666667%;
     }
-    .home {
-        margin-left:25%
+    .header-bar {
+        text-align:center;
     }
   }
