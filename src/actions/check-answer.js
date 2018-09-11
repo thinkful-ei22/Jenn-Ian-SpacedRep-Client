@@ -18,14 +18,15 @@ export const checkAnswerSuccess = feedback => ({
     feedback
 });
 
-export const checkAnswer = (answerObj) => (dispatch, getState) => {
+export const checkAnswer = (answerObj, userId) => (dispatch, getState) => {
     dispatch(checkAnswerRequest());
+    console.log(answerObj);
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/users`, {
+    return fetch(`${API_BASE_URL}/users/${userId}`, {
         method: 'PUT',
         headers: {
-            // Provide our auth token as credentials
-            Authorization: `Bearer ${authToken}`
+            Authorization: `Bearer ${authToken}`,
+            'content-type': 'application/json'
         },
         body: JSON.stringify(answerObj)
     })

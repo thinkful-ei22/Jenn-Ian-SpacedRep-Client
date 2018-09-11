@@ -5,8 +5,8 @@ import {
 } from '../actions/questions';
   
 const initialState = {
-  questions: [],
-  currentQuestion: {},
+  // questions: null,
+  currentQuestion: null,
   loading: false,
   error: null
 };
@@ -20,14 +20,15 @@ export default function questionReducer(state = initialState, action) {
   }
   else if (action.type === FETCH_QUESTION_SUCCESS) {
     return Object.assign({}, state, {
-      questions: [...action.question],
-      currentQuestion: action.question[0],
+      // questions: [...action.question],
+      currentQuestion: action.question,
       error: null
     }); 
   }
   else if (action.type === FETCH_QUESTION_ERROR) {
     return Object.assign({}, state, {
-      error: action.error
+      error: action.error,
+      loading: false
     });
   }
   return state;

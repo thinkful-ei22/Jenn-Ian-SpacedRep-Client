@@ -18,9 +18,9 @@ export const fetchQuestionError = (error) => ({
   error
 });
 
-export const fetchQuestion = () => (dispatch, getState) => {
+export const fetchQuestion = (userId) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/questions`, {
+  return fetch(`${API_BASE_URL}/users/${userId}`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${authToken}`
@@ -29,7 +29,5 @@ export const fetchQuestion = () => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then((question) => dispatch(fetchQuestionSuccess(question)))
-    .catch(err => {
-      dispatch(fetchQuestionError(err));
-    });
+    .catch(err => dispatch(fetchQuestionError(err)));
 };
