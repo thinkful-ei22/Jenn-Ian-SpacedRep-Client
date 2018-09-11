@@ -13,14 +13,12 @@ const initialState = {
   
 export default function questionReducer(state = initialState, action) {
   if (action.type === FETCH_QUESTION_REQUEST) {
-    console.log('question request fired');
     return Object.assign({}, state, {
       loading: true,
       error: null
     });
   }
   else if (action.type === FETCH_QUESTION_SUCCESS) {
-    console.log('action.question=', action.question);
     return Object.assign({}, state, {
       questions: [...action.question],
       currentQuestion: action.question[0],
@@ -28,7 +26,6 @@ export default function questionReducer(state = initialState, action) {
     }); 
   }
   else if (action.type === FETCH_QUESTION_ERROR) {
-    console.log('question error fired');
     return Object.assign({}, state, {
       error: action.error
     });

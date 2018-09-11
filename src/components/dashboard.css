@@ -109,7 +109,6 @@
         width: 16.666667%;
     }
     .word-display {
-        border: solid;
         padding: 15px;
         margin-left: 33.33333%;
         text-align: center;
@@ -132,5 +131,23 @@
         margin-top: 10px;
         border-radius: 0%;
         font-size: 14px;
+    }
+    .hidden {
+        display: none;
+    }
+    .incorrect-popup{
+        border: solid black 2px;
+    }
+    .success-popup {
+        border: solid black 2px;
+    }
+    .answering{
+        border: solid black 2px;
+    }
+    .correct{
+        border: solid green 2px;
+    }
+    .incorrect{
+        border: solid red 2px;
     }
   }
