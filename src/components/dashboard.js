@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchQuestion } from '../actions/questions';
-import './dashboard.css';
+import { checkAnswer } from '../actions/check-answer'
+;import './dashboard.css';
 
 export class Dashboard extends React.Component {
   componentDidMount() {
@@ -36,6 +37,19 @@ export class Dashboard extends React.Component {
     }
     //fetch next question in the list using the algorithm
   }
+
+  handleAnswerSubmit(e){
+    e.preventDefault();
+    console.log(this.props.currentQuestion);
+    console.log(e.target.answer.value);
+    const answerObj = {
+      userAnswer: e.target.answer.value,
+      currentQuestion: this.props.currentQuestion
+    }
+    this.props.dispatch(checkAnswer(answerObj))
+    //send a PUT request to /users with submitted answer
+  }
+
   render() {
     return (
       <div className="dashboard row">
@@ -44,12 +58,7 @@ export class Dashboard extends React.Component {
         </div>
         <div className="word-display col-3 answering">
           <h3 className="spanish-word">{this.props.spanishWord}</h3>
-          <form onSubmit={(e)=>{
-            e.preventDefault();
-            this.props.dispatch(fetchQuestion());
-            this.checkAnswer(e);
-          }
-          }>
+          <form onSubmit={(e)=> this.handleAnswerSubmit(e)}>
             <input type="text" name="answer" className="answer"></input>
             <button className="submit-answer" >Submit Answer</button>
             <div className="hidden" id="incorrect">
@@ -90,7 +99,8 @@ const mapStateToProps = state => {
     protectedData: state.protectedData.data,
     spanishWord: state.questions.currentQuestion.spanish,
     //send just the question to front, send the user answer to the backend instead and validate there, then send response to front
-    englishWord: state.questions.currentQuestion.english
+    englishWord: state.questions.currentQuestion.english,
+    currentQuestion: state.questions.currentQuestion
   };
 };
 
