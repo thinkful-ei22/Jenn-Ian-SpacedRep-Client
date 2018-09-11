@@ -89,6 +89,7 @@ const mapStateToProps = state => {
     name: `${currentUser.firstName}`,
     protectedData: state.protectedData.data,
     spanishWord: state.questions.currentQuestion.spanish,
+    //send just the question to front, send the user answer to the backend instead and validate there, then send response to front
     englishWord: state.questions.currentQuestion.english
   };
 };
