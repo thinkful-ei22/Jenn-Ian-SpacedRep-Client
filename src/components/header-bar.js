@@ -11,11 +11,7 @@ export class HeaderBar extends React.Component {
       loggingOut: false
     };
   }
-  componentDidMount(){
-    this.setState({
-      loggingOut: false
-    });
-  }
+
   logOut() {
     this.setState({
       loggingOut: true
@@ -23,6 +19,9 @@ export class HeaderBar extends React.Component {
     setTimeout(() => {
       this.props.dispatch(clearAuth());
       clearAuthToken();
+      this.setState({
+        loggingOut: false
+      });
     }, 2000);
   }
 
