@@ -49,9 +49,9 @@ export class Dashboard extends React.Component {
           <p>The answer is {this.props.feedback.correctAnswer}.
             <br></br>
             On to the next one!
-      </p>
+          </p>
           <button onClick={() => this.nextQuestion()}>Next Word</button>
-        </div>
+        </div>;
     } else if (this.props.feedback !== null && this.props.feedback.feedback === false){
       incorrectMessage =
         <div className="incorrect-popup" id="incorrect">
@@ -71,9 +71,9 @@ export class Dashboard extends React.Component {
     }
     let score;
     if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.total === 0){
-      score = Math.floor(100 * (this.props.currentUser.questionsCorrect / this.props.currentUser.questionsAnswered))
+      score = Math.floor(100 * (this.props.currentUser.questionsCorrect / this.props.currentUser.questionsAnswered));
     } else {
-      score = Math.floor(100 * (this.props.overallCorrect / this.props.overallAnswered))
+      score = Math.floor(100 * (this.props.overallCorrect / this.props.overallAnswered));
     }
 
     return (
