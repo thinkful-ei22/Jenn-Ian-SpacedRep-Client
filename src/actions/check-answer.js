@@ -23,15 +23,11 @@ export const clearFeedback = () => ({
   type: CLEAR_FEEDBACK
 });
 
-// export const UPDATE_SCORE_CORRECT = 'UPDATE_SCORE_CORRECT';
-// export const updateScoreCorrect = () => ({
-//   type: UPDATE_SCORE_CORRECT
-// });
+export const CLEAR_SESSION = 'CLEAR_SESSION';
+export const clearSession = () => ({
+  type: CLEAR_SESSION
+});
 
-// export const UPDATE_SCORE_INCORRECT = 'UPDATE_SCORE_INCORRECT';
-// export const updateScoreIncorrect = () => ({
-//   type: UPDATE_SCORE_INCORRECT
-// });
 
 export const checkAnswer = (answerObj, userId) => (dispatch, getState) => {
   dispatch(checkAnswerRequest());

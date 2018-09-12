@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchQuestion } from '../actions/questions';
 import { checkAnswer, clearFeedback} from '../actions/check-answer';
+import ResetBtn from './reset-btn';
 import './dashboard.css';
 
 export class Dashboard extends React.Component {
@@ -37,12 +38,14 @@ export class Dashboard extends React.Component {
       sessionScore = <h3>Your Session Score is {`${0}%`}</h3>;
     }
     else if (!isNaN((this.props.correct/this.props.total)*100)){
-      sessionScore = <h3>Your Session Score is {`${Math.round((this.props.correct/this.props.total)*100)}%`}</h3>;
+      sessionScore = <h3>Your Session Score is {this.props.correct} out of {this.props.total} or {`${Math.round((this.props.correct/this.props.total)*100)}%`}</h3>;
     }
     let correctMessage;
     let incorrectMessage;
+    let answerInput = <input type="text" name="answer" className="answer"></input>;
     
     if (this.props.feedback !== null && this.props.feedback.feedback === true) {
+      answerInput = '';
       correctMessage =
         <div className="success-popup" id="success">
           <h4>¡Muy bien!</h4>
@@ -53,6 +56,7 @@ export class Dashboard extends React.Component {
           <button onClick={() => this.nextQuestion()}>Next Word</button>
         </div>;
     } else if (this.props.feedback !== null && this.props.feedback.feedback === false){
+      answerInput = '';
       incorrectMessage =
         <div className="incorrect-popup" id="incorrect">
           <h4>¡Ay!</h4>
@@ -84,11 +88,12 @@ export class Dashboard extends React.Component {
           <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
           <h3>Your Overall Score is {score} %</h3>
           {sessionScore}
+          <ResetBtn/>
         </div>
         <div className="word-display col-3 answering">
           <h3 className="spanish-word">{spanishWord}</h3>
           <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
-            <input type="text" name="answer" className="answer"></input>
+            {answerInput}
             {submitBtn}
             {incorrectMessage}
             {correctMessage}
