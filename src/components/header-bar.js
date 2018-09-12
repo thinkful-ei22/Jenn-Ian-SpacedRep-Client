@@ -24,7 +24,7 @@ export class HeaderBar extends React.Component {
 
   render() {
     let loggingOutMessage;
-    if(this.state.loggingOut === true) {
+    if(this.state.loggingOut === true && this.props.loggedIn) {
       loggingOutMessage = <h3>Logging Out, See You Next Time!</h3>
     }
 
