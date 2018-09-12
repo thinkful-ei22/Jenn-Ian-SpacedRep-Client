@@ -42,8 +42,10 @@ export class Dashboard extends React.Component {
     }
     let correctMessage;
     let incorrectMessage;
+    let answerInput = <input type="text" name="answer" className="answer"></input>;
     
     if (this.props.feedback !== null && this.props.feedback.feedback === true) {
+      answerInput = '';
       correctMessage =
         <div className="success-popup" id="success">
           <h4>¡Muy bien!</h4>
@@ -54,6 +56,7 @@ export class Dashboard extends React.Component {
           <button onClick={() => this.nextQuestion()}>Next Word</button>
         </div>;
     } else if (this.props.feedback !== null && this.props.feedback.feedback === false){
+      answerInput = '';
       incorrectMessage =
         <div className="incorrect-popup" id="incorrect">
           <h4>¡Ay!</h4>
@@ -90,7 +93,7 @@ export class Dashboard extends React.Component {
         <div className="word-display col-3 answering">
           <h3 className="spanish-word">{spanishWord}</h3>
           <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
-            <input type="text" name="answer" className="answer"></input>
+            {answerInput}
             {submitBtn}
             {incorrectMessage}
             {correctMessage}
