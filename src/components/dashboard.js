@@ -12,22 +12,10 @@ export class Dashboard extends React.Component {
   componentDidUpdate() {
     console.log(this.props.currentQuestion);
   }
-  nextQuestion(e) {
-    const wordDisplay = e.target.parentElement.parentElement.parentElement;
-    const popup = e.target.parentElement;
-    if (popup.className === 'incorrect-popup') {
-      popup.className = 'hidden';
-      wordDisplay.className = 'word-display col-3 answering';
-      // this.props.dispatch(updateScoreIncorrect());
-    }
-    else if (popup.className === 'success-popup') {
-      popup.className = 'hidden';
-      wordDisplay.className = 'word-display col-3 answering';
-      // this.props.dispatch(updateScoreCorrect());
-    }
+
+  nextQuestion() {
     this.props.dispatch(fetchQuestion(this.props.userId));
     this.props.dispatch(clearFeedback());
-
   }
 
   handleAnswerSubmit(e) {
@@ -65,9 +53,9 @@ export class Dashboard extends React.Component {
           <p>The answer is {this.props.feedback.correctAnswer}.
             <br></br>
             On to the next one!
-          </p>
-          <button onClick={e => this.nextQuestion(e)}>Next Word</button>
-        </div>;
+      </p>
+          <button onClick={() => this.nextQuestion()}>Next Word</button>
+        </div>
     } else if (this.props.feedback !== null && this.props.feedback.feedback === false){
       incorrectMessage =
         <div className="incorrect-popup" id="incorrect">
@@ -85,17 +73,24 @@ export class Dashboard extends React.Component {
     if (this.props.feedback === null) {
       submitBtn = <button className="submit-answer" >Submit Answer</button>;
     }
+    let score;
+    if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.feedback === null){
+      score = Math.floor(100 * (this.props.currentUser.questionsCorrect / this.props.currentUser.questionsAnswered))
+    } else {
+      score = Math.floor(100 * (this.props.feedback.questionsCorrect / this.props.feedback.questionsAnswered))
+    }
 
     return (
       <div className="dashboard row">
         <div className="dashboard-name">
           <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
-          <h3>Your Total Score is {this.props.currentUser.score}</h3>
+
+
+          <h3>Your Total Score is {score} %</h3>
           {sessionScore}
         </div>
         <div className="word-display col-3 answering">
           <h3 className="spanish-word">{spanishWord}</h3>
-
           <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
             <input type="text" name="answer" className="answer"></input>
             {submitBtn}
@@ -117,10 +112,7 @@ const mapStateToProps = state => {
     name: state.auth.currentUser.firstName,
     feedback: state.checkAnswer.feedback,
     total: state.checkAnswer.totalAnswered,
-    correct: state.checkAnswer.totalCorrect,
-    // spanishWord: state.questions.currentQuestion.spanish,
-    //send just the question to front, send the user answer to the backend instead and validate there, then send response to front
-    // englishWord: state.questions.currentQuestion.english,
+    correct: state.checkAnswer.totalCorrect
   };
 };
 

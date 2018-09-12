@@ -5,7 +5,6 @@ import {
 } from '../actions/questions';
   
 const initialState = {
-  // questions: null,
   currentQuestion: null,
   loading: false,
   error: null
@@ -19,8 +18,8 @@ export default function questionReducer(state = initialState, action) {
     });
   }
   else if (action.type === FETCH_QUESTION_SUCCESS) {
+    // console.log(action.question)
     return Object.assign({}, state, {
-      // questions: [...action.question],
       currentQuestion: action.question,
       error: null
     }); 
