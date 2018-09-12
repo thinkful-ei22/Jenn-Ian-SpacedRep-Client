@@ -10,38 +10,12 @@ export class Dashboard extends React.Component {
     this.props.dispatch(fetchQuestion(this.props.userId));
   }
   componentDidUpdate() {
-    console.log(this.props.feedback);
+    console.log(this.props.currentQuestion);
   }
-  // checkAnswer(e) {
-  //   const answer = e.target.answer.value;
-  //   const incorrectPopup = e.target.firstChild.nextSibling.nextSibling;
-  //   const successPopup = e.target.firstChild.nextSibling.nextSibling.nextSibling;
-  //   const wordDisplay = e.target.parentElement;
 
-  //   if (answer === this.props.englishWord) {
-  //     successPopup.className = 'success-popup';
-  //     wordDisplay.className = 'word-display col-3 correct';
-  //   }
-  //   else {
-  //     incorrectPopup.className = 'incorrect-popup';
-  //     wordDisplay.className = 'word-display col-3 incorrect';
-  //   }
-  // }
-  nextQuestion(e) {
-    const wordDisplay = e.target.parentElement.parentElement.parentElement;
-    const popup = e.target.parentElement;
-    console.log('word dispaly=', wordDisplay, 'popup=', popup);
-    if (popup.className === 'incorrect-popup') {
-      popup.className = 'hidden';
-      wordDisplay.className = 'word-display col-3 answering';
-    }
-    else if (popup.className === 'success-popup') {
-      popup.className = 'hidden';
-      wordDisplay.className = 'word-display col-3 answering';
-    }
+  nextQuestion() {
     this.props.dispatch(fetchQuestion(this.props.userId));
     this.props.dispatch(clearFeedback());
-
   }
 
   handleAnswerSubmit(e) {
@@ -72,7 +46,7 @@ export class Dashboard extends React.Component {
         <br></br>
             On to the next one!
       </p>
-          <button onClick={e => this.nextQuestion(e)}>Next Word</button>
+          <button onClick={() => this.nextQuestion()}>Next Word</button>
         </div>
     } else if (this.props.feedback !== null && this.props.feedback.feedback === false){
       incorrectMessage =
@@ -89,16 +63,21 @@ export class Dashboard extends React.Component {
     if (this.props.feedback === null) {
       submitBtn = <button className="submit-answer" >Submit Answer</button>
     }
+    let score;
+    if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.feedback === null){
+      score = Math.floor(100 * (this.props.currentUser.questionsCorrect / this.props.currentUser.questionsAnswered))
+    } else {
+      score = Math.floor(100 * (this.props.feedback.questionsCorrect / this.props.feedback.questionsAnswered))
+    }
 
     return (
       <div className="dashboard row">
         <div className="dashboard-name">
           <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
-          <h3>You're Total Score is {this.props.currentUser.score}</h3>
+          <h3>You're Overall Score is {score}%</h3>
         </div>
         <div className="word-display col-3 answering">
           <h3 className="spanish-word">{spanishWord}</h3>
-
           <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
             <input type="text" name="answer" className="answer"></input>
             {submitBtn}
@@ -119,9 +98,6 @@ const mapStateToProps = state => {
     userId: state.auth.currentUser._id,
     name: state.auth.currentUser.firstName,
     feedback: state.checkAnswer.feedback
-    // spanishWord: state.questions.currentQuestion.spanish,
-    //send just the question to front, send the user answer to the backend instead and validate there, then send response to front
-    // englishWord: state.questions.currentQuestion.english,
   };
 };
 
