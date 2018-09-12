@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchQuestion } from '../actions/questions';
+import {Link, Redirect} from 'react-router-dom';
 import { checkAnswer, clearFeedback} from '../actions/check-answer';
 import ResetBtn from './reset-btn';
 import './dashboard.css';
@@ -75,15 +76,16 @@ export class Dashboard extends React.Component {
     }
     let score;
     if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.total === 0){
-      score = Math.floor(100 * (this.props.currentUser.questionsCorrect / this.props.currentUser.questionsAnswered))
+      score = Math.floor(100 * (this.props.currentUser.questionsCorrect / this.props.currentUser.questionsAnswered));
     } else if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered === 0 && this.props.total === 0){
       score = 0;
     } else {
-      score = Math.floor(100 * (this.props.overallCorrect / this.props.overallAnswered))
+      score = Math.floor(100 * (this.props.overallCorrect / this.props.overallAnswered));
     }
 
     return (
       <div className="dashboard row">
+        <Link to="/stats">Performance</Link>
         <div className="dashboard-name">
           <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
           <h3>Your Overall Score is {score} %</h3>
