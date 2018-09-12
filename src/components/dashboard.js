@@ -38,7 +38,7 @@ export class Dashboard extends React.Component {
       sessionScore = <h3>Your Session Score is {`${0}%`}</h3>;
     }
     else if (!isNaN((this.props.correct/this.props.total)*100)){
-      sessionScore = <h3>Your Session Score is {`${Math.round((this.props.correct/this.props.total)*100)}%`}</h3>;
+      sessionScore = <h3>Your Session Score is {this.props.correct} out of {this.props.total} or {`${Math.round((this.props.correct/this.props.total)*100)}%`}</h3>;
     }
     let correctMessage;
     let incorrectMessage;
