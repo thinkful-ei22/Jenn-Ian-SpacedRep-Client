@@ -23,6 +23,16 @@ export const clearFeedback = () => ({
   type: CLEAR_FEEDBACK
 });
 
+// export const UPDATE_SCORE_CORRECT = 'UPDATE_SCORE_CORRECT';
+// export const updateScoreCorrect = () => ({
+//   type: UPDATE_SCORE_CORRECT
+// });
+
+// export const UPDATE_SCORE_INCORRECT = 'UPDATE_SCORE_INCORRECT';
+// export const updateScoreIncorrect = () => ({
+//   type: UPDATE_SCORE_INCORRECT
+// });
+
 export const checkAnswer = (answerObj, userId) => (dispatch, getState) => {
   dispatch(checkAnswerRequest());
   const authToken = getState().auth.authToken;
