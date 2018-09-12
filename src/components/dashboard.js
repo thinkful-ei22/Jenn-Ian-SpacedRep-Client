@@ -72,7 +72,10 @@ export class Dashboard extends React.Component {
     let score;
     if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.total === 0){
       score = Math.floor(100 * (this.props.currentUser.questionsCorrect / this.props.currentUser.questionsAnswered))
-    } else {
+    } else if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered === 0 && this.props.total === 0){
+      score = 0;
+    } 
+    else {
       score = Math.floor(100 * (this.props.overallCorrect / this.props.overallAnswered))
     }
 
