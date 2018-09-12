@@ -3,6 +3,7 @@ import {
   CHECK_ANSWER_ERROR,
   CHECK_ANSWER_SUCCESS,
   CLEAR_FEEDBACK,
+  CLEAR_SESSION
 } from '../actions/check-answer';
     
 const initialState = {
@@ -19,6 +20,11 @@ export default function checkAnswerReducer(state = initialState, action) {
   if (action.type === CLEAR_FEEDBACK) {
     return Object.assign({}, state, {
       feedback: null
+    }); 
+  } else if (action.type === CLEAR_SESSION) {
+    return Object.assign({}, state, {
+      totalAnswered: null,
+      totalCorrect: null
     }); 
   }
   else if (action.type === CHECK_ANSWER_REQUEST) {

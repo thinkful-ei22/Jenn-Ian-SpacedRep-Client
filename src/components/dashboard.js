@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchQuestion } from '../actions/questions';
 import { checkAnswer, clearFeedback} from '../actions/check-answer';
+import ResetBtn from './reset-btn';
 import './dashboard.css';
 
 export class Dashboard extends React.Component {
@@ -84,6 +85,7 @@ export class Dashboard extends React.Component {
           <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
           <h3>Your Overall Score is {score} %</h3>
           {sessionScore}
+          <ResetBtn/>
         </div>
         <div className="word-display col-3 answering">
           <h3 className="spanish-word">{spanishWord}</h3>
