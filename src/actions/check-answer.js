@@ -18,9 +18,13 @@ export const checkAnswerSuccess = feedback => ({
   feedback
 });
 
+export const CLEAR_FEEDBACK = 'CLEAR_FEEDBACK';
+export const clearFeedback = () => ({
+  type: CLEAR_FEEDBACK
+});
+
 export const checkAnswer = (answerObj, userId) => (dispatch, getState) => {
   dispatch(checkAnswerRequest());
-  console.log(answerObj);
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/users/${userId}`, {
     method: 'PUT',
@@ -32,8 +36,7 @@ export const checkAnswer = (answerObj, userId) => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-  //remove curlies?
-    .then(({ data }) => dispatch(checkAnswerSuccess(data)))
+    .then((data) => dispatch(checkAnswerSuccess(data)))
     .catch(err => {
       dispatch(checkAnswerError(err));
     });
