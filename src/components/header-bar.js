@@ -11,21 +11,25 @@ export class HeaderBar extends React.Component {
       loggingOut: false
     };
   }
-
+  componentDidMount(){
+    this.setState({
+      loggingOut: false
+    });
+  }
   logOut() {
     this.setState({
       loggingOut: true
-    })
+    });
     setTimeout(() => {
       this.props.dispatch(clearAuth());
       clearAuthToken();
-    }, 2000)
+    }, 2000);
   }
 
   render() {
     let loggingOutMessage;
     if(this.state.loggingOut === true && this.props.loggedIn) {
-      loggingOutMessage = <h3>Logging Out, See You Next Time!</h3>
+      loggingOutMessage = <h3>Logging Out, See You Next Time!</h3>;
     }
 
     // Only render the log out button if we are logged in
