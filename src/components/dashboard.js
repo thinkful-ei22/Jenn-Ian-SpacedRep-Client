@@ -9,9 +9,6 @@ export class Dashboard extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchQuestion(this.props.userId));
   }
-  componentDidUpdate() {
-    console.log(this.props.currentQuestion);
-  }
 
   nextQuestion() {
     this.props.dispatch(fetchQuestion(this.props.userId));
@@ -25,7 +22,6 @@ export class Dashboard extends React.Component {
       currentQuestionSpanish: this.props.currentQuestion.spanish,
     };
     e.target.answer.value = '';
-    console.log(answerObj, this.props.userId);
     this.props.dispatch(checkAnswer(answerObj, this.props.userId));
   }
 
@@ -74,19 +70,17 @@ export class Dashboard extends React.Component {
       submitBtn = <button className="submit-answer" >Submit Answer</button>;
     }
     let score;
-    if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.feedback === null){
+    if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.total === 0){
       score = Math.floor(100 * (this.props.currentUser.questionsCorrect / this.props.currentUser.questionsAnswered))
     } else {
-      score = Math.floor(100 * (this.props.feedback.questionsCorrect / this.props.feedback.questionsAnswered))
+      score = Math.floor(100 * (this.props.overallCorrect / this.props.overallAnswered))
     }
 
     return (
       <div className="dashboard row">
         <div className="dashboard-name">
           <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
-
-
-          <h3>Your Total Score is {score} %</h3>
+          <h3>Your Overall Score is {score} %</h3>
           {sessionScore}
         </div>
         <div className="word-display col-3 answering">
@@ -112,7 +106,9 @@ const mapStateToProps = state => {
     name: state.auth.currentUser.firstName,
     feedback: state.checkAnswer.feedback,
     total: state.checkAnswer.totalAnswered,
-    correct: state.checkAnswer.totalCorrect
+    correct: state.checkAnswer.totalCorrect,
+    overallAnswered: state.checkAnswer.overallAnswered,
+    overallCorrect: state.checkAnswer.overallCorrect
   };
 };
 

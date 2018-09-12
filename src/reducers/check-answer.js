@@ -7,6 +7,8 @@ import {
     
 const initialState = {
   feedback: null,
+  overallAnswered: null,
+  overallCorrect: null,
   totalAnswered: 0,
   totalCorrect:0,
   loading: false,
@@ -31,13 +33,17 @@ export default function checkAnswerReducer(state = initialState, action) {
         feedback: action.feedback,
         totalAnswered: state.totalAnswered+1,
         totalCorrect: state.totalCorrect+1,
-        error: null
+        error: null,
+        overallAnswered: action.feedback.questionsAnswered,
+        overallCorrect: action.feedback.questionsCorrect
       }); 
     }
     return Object.assign({}, state, {
       feedback: action.feedback,
       totalAnswered: state.totalAnswered+1,
-      error: null
+      error: null,
+      overallAnswered: action.feedback.questionsAnswered,
+      overallCorrect: action.feedback.questionsCorrect
     }); 
   }
   else if (action.type === CHECK_ANSWER_ERROR) {
