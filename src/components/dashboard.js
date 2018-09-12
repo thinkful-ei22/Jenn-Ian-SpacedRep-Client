@@ -10,26 +10,27 @@ export class Dashboard extends React.Component {
     this.props.dispatch(fetchQuestion(this.props.userId));
   }
   componentDidUpdate(){
-    console.log(this.props.currentQuestion)
+    console.log(this.props.currentQuestion);
   }
-  checkAnswer(e) {
-    const answer = e.target.answer.value;
-    const incorrectPopup = e.target.firstChild.nextSibling.nextSibling;
-    const successPopup = e.target.firstChild.nextSibling.nextSibling.nextSibling;
-    const wordDisplay = e.target.parentElement;
+  // checkAnswer(e) {
+  //   const answer = e.target.answer.value;
+  //   const incorrectPopup = e.target.firstChild.nextSibling.nextSibling;
+  //   const successPopup = e.target.firstChild.nextSibling.nextSibling.nextSibling;
+  //   const wordDisplay = e.target.parentElement;
 
-    if (answer === this.props.englishWord) {
-      successPopup.className = 'success-popup';
-      wordDisplay.className = 'word-display col-3 correct';
-    }
-    else {
-      incorrectPopup.className = 'incorrect-popup';
-      wordDisplay.className = 'word-display col-3 incorrect';
-    }
-  }
+  //   if (answer === this.props.englishWord) {
+  //     successPopup.className = 'success-popup';
+  //     wordDisplay.className = 'word-display col-3 correct';
+  //   }
+  //   else {
+  //     incorrectPopup.className = 'incorrect-popup';
+  //     wordDisplay.className = 'word-display col-3 incorrect';
+  //   }
+  // }
   nextQuestion(e) {
     const wordDisplay = e.target.parentElement.parentElement.parentElement;
     const popup = e.target.parentElement;
+    console.log('word dispaly=', wordDisplay, 'popup=', popup);
     if (popup.className === 'incorrect-popup') {
       popup.className = 'hidden';
       wordDisplay.className = 'word-display col-3 answering';
@@ -38,24 +39,33 @@ export class Dashboard extends React.Component {
       popup.className = 'hidden';
       wordDisplay.className = 'word-display col-3 answering';
     }
-    //fetch next question in the list using the algorithm
+    this.props.dispatch(fetchQuestion(this.props.userId));
   }
 
   handleAnswerSubmit(e) {
     e.preventDefault();
+    const incorrectPopup = e.target.firstChild.nextSibling.nextSibling;
+    const successPopup = e.target.firstChild.nextSibling.nextSibling.nextSibling;
+    const wordDisplay = e.target.parentElement;
     const answerObj = {
       userAnswer: e.target.answer.value,
       currentQuestionSpanish: this.props.currentQuestion.spanish,
+    };
+    if (this.props.currentUser.feedback === true) {
+      successPopup.className = 'success-popup';
+      wordDisplay.className = 'word-display col-3 correct';
     }
-    console.log(answerObj)
-    this.props.dispatch(checkAnswer(answerObj, this.props.userId))
-    //send a PUT request to /users with submitted answer
+    else {
+      incorrectPopup.className = 'incorrect-popup';
+      wordDisplay.className = 'word-display col-3 incorrect';
+    }
+    this.props.dispatch(checkAnswer(answerObj, this.props.userId));
   }
 
   render() {
     let spanishWord;
     if( this.props.currentQuestion === null) {
-      spanishWord = "loading..."
+      spanishWord = 'loading...';
     } else {
       spanishWord = this.props.currentQuestion.spanish;
     }
