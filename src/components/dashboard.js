@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchQuestion } from '../actions/questions';
-import {Link, Redirect} from 'react-router-dom';
-import { checkAnswer, clearFeedback} from '../actions/check-answer';
+// import { Link, Redirect } from 'react-router-dom';
+import { checkAnswer, clearFeedback } from '../actions/check-answer';
 import ResetBtn from './reset-btn';
 import './dashboard.css';
+import HeaderBar from './header-bar';
 
 export class Dashboard extends React.Component {
   componentDidMount() {
@@ -35,16 +36,16 @@ export class Dashboard extends React.Component {
       spanishWord = this.props.currentQuestion.spanish;
     }
     let sessionScore;
-    if(isNaN((this.props.correct/this.props.total)*100)){
+    if (isNaN((this.props.correct / this.props.total) * 100)) {
       sessionScore = <h3>Your Session Score is {`${0}%`}</h3>;
     }
-    else if (!isNaN((this.props.correct/this.props.total)*100)){
-      sessionScore = <h3>Your Session Score is {this.props.correct} out of {this.props.total} or {`${Math.round((this.props.correct/this.props.total)*100)}%`}</h3>;
+    else if (!isNaN((this.props.correct / this.props.total) * 100)) {
+      sessionScore = <h3>Your Session Score is {this.props.correct} out of {this.props.total} or {`${Math.round((this.props.correct / this.props.total) * 100)}%`}</h3>;
     }
     let correctMessage;
     let incorrectMessage;
     let answerInput = <input type="text" name="answer" className="answer"></input>;
-    
+
     if (this.props.feedback !== null && this.props.feedback.feedback === true) {
       answerInput = '';
       correctMessage =
@@ -56,7 +57,7 @@ export class Dashboard extends React.Component {
           </p>
           <button onClick={() => this.nextQuestion()}>Next Word</button>
         </div>;
-    } else if (this.props.feedback !== null && this.props.feedback.feedback === false){
+    } else if (this.props.feedback !== null && this.props.feedback.feedback === false) {
       answerInput = '';
       incorrectMessage =
         <div className="incorrect-popup" id="incorrect">
@@ -67,38 +68,41 @@ export class Dashboard extends React.Component {
           </p>
           <button onClick={e => this.nextQuestion(e)}>Next Word</button>
         </div>;
-     
+
     }
     let submitBtn;
-    
+
     if (this.props.feedback === null) {
       submitBtn = <button className="submit-answer" >Submit Answer</button>;
     }
     let score;
-    if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.total === 0){
+    if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.total === 0) {
       score = Math.floor(100 * (this.props.currentUser.questionsCorrect / this.props.currentUser.questionsAnswered));
-    } else if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered === 0 && this.props.total === 0){
+    } else if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered === 0 && this.props.total === 0) {
       score = 0;
     } else {
       score = Math.floor(100 * (this.props.overallCorrect / this.props.overallAnswered));
     }
 
     return (
-      <div className="dashboard row">
-        <div className="dashboard-name">
-          <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
-          <h3>Your Overall Score is {score} %</h3>
-          {sessionScore}
-          <ResetBtn/>
-        </div>
-        <div className="word-display col-3 answering">
-          <h3 className="spanish-word">{spanishWord}</h3>
-          <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
-            {answerInput}
-            {submitBtn}
-            {incorrectMessage}
-            {correctMessage}
-          </form>
+      <div>
+        <HeaderBar />
+        <div className="dashboard row">
+          <div className="dashboard-name">
+            <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
+            <h3>Your Overall Score is {score} %</h3>
+            {sessionScore}
+            <ResetBtn />
+          </div>
+          <div className="word-display col-3 answering">
+            <h3 className="spanish-word">{spanishWord}</h3>
+            <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
+              {answerInput}
+              {submitBtn}
+              {incorrectMessage}
+              {correctMessage}
+            </form>
+          </div>
         </div>
       </div>
     );

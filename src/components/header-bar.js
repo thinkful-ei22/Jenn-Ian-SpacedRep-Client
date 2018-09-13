@@ -54,12 +54,6 @@ export class HeaderBar extends React.Component {
         </div>
         {loggingOutMessage}
       </div>
-
-      // <div className="header-bar row">
-      //   <h1>¡Hablamos!</h1>
-
-
-      // </div>
     );
   }
 }
