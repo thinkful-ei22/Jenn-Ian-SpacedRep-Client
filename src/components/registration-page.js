@@ -21,7 +21,7 @@ export function RegistrationPage(props) {
       <p>Looking to take your Spanish to the next level?  ¡Hablamos! uses scientifically proven learning
         techniques to help you learn Spanish in no time!</p>
       <h2>Register for ¡Hablamos!</h2>
-      <div id="segment" className="ui raised segment">
+      <div id="segment" className="ui raised segment login">
       <RegistrationForm />
       <Link to="/">Already a User? Login Here</Link>
       </div>

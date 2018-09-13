@@ -73,7 +73,7 @@ export class Dashboard extends React.Component {
       answerInput = '';
       correctMessage =
         <div className="ui green inverted segment" id="success">
-          <h4>¡Muy bien!</h4>
+          <h3>¡Muy bien!</h3>
           <p>The answer is {this.props.feedback.correctAnswer}.
             <br></br>
             On to the next one!
@@ -84,7 +84,7 @@ export class Dashboard extends React.Component {
       answerInput = '';
       incorrectMessage =
         <div className="ui red inverted segment" id="incorrect">
-          <h4>¡Ay!</h4>
+          <h3>¡Ay!</h3>
           <p>The answer is {this.props.feedback.correctAnswer}.
             <br></br>
             You'll get it next time!
@@ -112,7 +112,7 @@ export class Dashboard extends React.Component {
         <HeaderBar />
         <div className="dashboard row">
           <div id="welcome" className="dashboard-name">
-            <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
+            <h1 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h1>
             <h3>Your Overall Score is {score} %</h3>
             {sessionScore}
             <ResetBtn />
@@ -120,7 +120,7 @@ export class Dashboard extends React.Component {
         </div>
         {/* <div className="ui horizontal segments"> */}
         <div id="segment" className="word-display col-3 answering ui raised segment">
-          <h3 className="spanish-word">{spanishWord}</h3>
+          <h2 className="spanish-word">{spanishWord}</h2>
           <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
             {answerInput}
             {submitBtn}

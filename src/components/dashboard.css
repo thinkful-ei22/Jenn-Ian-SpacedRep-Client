@@ -13,6 +13,8 @@
 
 #segment .input {
     height: 41px;
-    font-size: 40px;
+    width: 250px;
+    font-size: 25px;
+    margin-bottom: 15px;
 
 }
