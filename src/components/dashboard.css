@@ -4,12 +4,15 @@
 #welcome {
     margin: 80px;
 }
-input {
-    height: 41px;
-    font-size: 40px;
-}
+
 #segment {
     width: 400px;
     margin-left: auto;
     margin-right: auto
+}
+
+#segment .input {
+    height: 41px;
+    font-size: 40px;
+
 }
