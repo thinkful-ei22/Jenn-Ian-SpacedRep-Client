@@ -85,7 +85,6 @@ export class Dashboard extends React.Component {
 
     return (
       <div className="dashboard row">
-        <Link to="/stats">Performance</Link>
         <div className="dashboard-name">
           <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
           <h3>Your Overall Score is {score} %</h3>
