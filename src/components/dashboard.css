@@ -1,153 +1,20 @@
-@media only screen /* phone */
-  and (min-width: 320px) 
-  and (max-width: 480px)
- {
+.row {
+    text-align: center;
+}
+#welcome {
+    margin: 80px;
+}
 
-    *{
-        box-sizing:border-box;
-    }
-    .row{
-        width:100%;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin: auto;
-    }
-    /* Clearfix */
-    .row::before,
-    .row::after {
-        display: table;
-        content: '';
-    }
-    .row::after {
-        clear: both;
-    }
-    .col-2, .col-3, .col-4, .col-6{
-        width:100%;
-        float: left;
-        padding-left: 1.04166666%;
-        padding-right: 1.04166666%;
-    }
-    .word-display {
-     
-    }
-  }
-@media only screen /* tablet */
-  and (min-width: 481px) 
-  and (max-width: 1024px) 
- {
+#segment {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto
+}
 
-    *{
-        box-sizing:border-box;
-    }
-    .row{
-        width:100%;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin: auto;
-    }
-    /* Clearfix */
-    .row::before,
-    .row::after {
-        display: table;
-        content: '';
-    }
-    .row::after {
-        clear: both;
-    }
-    .col-2, .col-3, .col-4, .col-6{
-        width:100%;
-        float: left;
-        padding-left: 1.04166666%;
-        padding-right: 1.04166666%;
-    }
-    .word-display {
+#segment .input {
+    height: 41px;
+    width: 250px;
+    font-size: 25px;
+    margin-bottom: 15px;
 
-    }
-  }
-@media only screen /* computer */
-  and (min-width: 1025px) 
-  and (max-width: 2600px) 
- {
-
-    *{
-        box-sizing:border-box;
-    }
-    .row{
-        width:100%;
-        padding-left: 20px;
-        padding-right: 20px;
-        margin: auto;
-    }
-    /* Clearfix */
-    .row::before,
-    .row::after {
-        display: table;
-        content: '';
-    }
-    .row::after {
-        clear: both;
-    }
-    .col-2, .col-3, .col-4, .col-6{
-        float: left;
-        padding-left: 1.04166666%;
-        padding-right: 1.04166666%;
-    }
-    /* 2 columns - each 1/2 a page */
-    .col-2{
-        width:50%;
-    }
-    /* 3 columns -each 1/3 a page */
-    .col-3{
-        width: 33.333333%;
-    }
-    /* 4 columns - each 1/4 page*/
-    .col-4{
-        width: 25%;
-    }
-    /* 6 columns - each 1/6 page */
-    .col-6{
-        width: 16.666667%;
-    }
-    .word-display {
-        padding: 15px;
-        margin-left: 33.33333%;
-        text-align: center;
-    }
-    .dashboard-name{
-        text-align:center;
-    }
-    .welcome{
-
-    }
-    .spanish-word{
-        text-align: center;
-        margin-top: 0px;
-    }
-    .answer{
-        height: 35px;
-        width: 90%;
-    }
-    .submit-answer{
-        margin-top: 10px;
-        border-radius: 0%;
-        font-size: 14px;
-    }
-    .hidden {
-        display: none;
-    }
-    .incorrect-popup{
-        border: solid black 2px;
-    }
-    .success-popup {
-        border: solid black 2px;
-    }
-    .answering{
-        border: solid black 2px;
-    }
-    .correct{
-        border: solid green 2px;
-    }
-    .incorrect{
-        border: solid red 2px;
-    }
-  }
+}

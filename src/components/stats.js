@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchQuestion } from '../actions/questions';
+import HeaderBar from './header-bar';
 
 export class StatsPage extends React.Component {
   componentDidMount(){
@@ -27,6 +28,7 @@ export class StatsPage extends React.Component {
     }
     return (
       <div>
+        <HeaderBar/>
         <h2>{this.props.name}'s Performance</h2>
         <div className="col-3 overall-score">
           <h4>Overall</h4>
