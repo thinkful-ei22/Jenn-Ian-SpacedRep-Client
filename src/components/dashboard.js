@@ -9,6 +9,12 @@ import './dashboard.css';
 import HeaderBar from './header-bar';
 
 export class Dashboard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      searchBtnDisabled: true
+    };
+  }
   componentDidMount() {
     this.props.dispatch(fetchQuestion(this.props.userId));
   }
@@ -28,7 +34,24 @@ export class Dashboard extends React.Component {
     this.props.dispatch(checkAnswer(answerObj, this.props.userId));
   }
 
+  handleDisable(e) {
+    if (e.target.value !== '') {
+      this.setState({
+        searchBtnDisabled: false
+      })
+    } else {
+      this.setState({
+        searchBtnDisabled: true
+      })
+    }
+  }
+
   render() {
+    let disabled = true;
+    if(this.state.searchBtnDisabled === false) {
+        disabled = false
+    };
+
     let spanishWord;
     if (this.props.currentQuestion === null) {
       spanishWord = 'loading...';
@@ -44,7 +67,7 @@ export class Dashboard extends React.Component {
     }
     let correctMessage;
     let incorrectMessage;
-    let answerInput = <input type="text" name="answer" placeholder="your guess..." className="answer ui input"></input>;
+    let answerInput = <input onChange={(e) => this.handleDisable(e)} type="text" name="answer" placeholder="your guess..." className="answer ui input"></input>;
 
     if (this.props.feedback !== null && this.props.feedback.feedback === true) {
       answerInput = '';
@@ -73,7 +96,7 @@ export class Dashboard extends React.Component {
     let submitBtn;
 
     if (this.props.feedback === null) {
-      submitBtn = <button className="submit-answer ui button large" >Submit Answer</button>;
+      submitBtn = <button disabled={disabled} className="submit-answer ui button large" >Submit Answer</button>;
     }
     let score;
     if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.total === 0) {
@@ -88,25 +111,25 @@ export class Dashboard extends React.Component {
       <div>
         <HeaderBar />
         <div className="dashboard row">
-          <div className="dashboard-name">
+          <div id="welcome" className="dashboard-name">
             <h2 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h2>
             <h3>Your Overall Score is {score} %</h3>
             {sessionScore}
             <ResetBtn />
           </div>
-          </div>
-          {/* <div className="ui horizontal segments"> */}
-          <div className="word-display col-3 answering ui raised segment">
-            <h3 className="spanish-word">{spanishWord}</h3>
-            <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
-              {answerInput}
-              {submitBtn}
-              {incorrectMessage}
-              {correctMessage}
-            </form>
-            </div>
-          </div>
-          // </div>
+        </div>
+        {/* <div className="ui horizontal segments"> */}
+        <div id="segment" className="word-display col-3 answering ui raised segment">
+          <h3 className="spanish-word">{spanishWord}</h3>
+          <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
+            {answerInput}
+            {submitBtn}
+            {incorrectMessage}
+            {correctMessage}
+          </form>
+        </div>
+      </div>
+      // </div>
     );
   }
 }
