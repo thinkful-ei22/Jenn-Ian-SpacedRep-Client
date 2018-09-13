@@ -40,7 +40,7 @@ export class StatsPage extends React.Component {
           <p>Questions Answered: {this.props.total}</p>
           <p>Questions Correct: {this.props.correct}</p>
           <p>Questions Incorrect: {this.props.total - this.props.correct}</p>
-          <p>Performance: {Math.round((this.props.total/this.props.correct)*100)}</p>
+          <p>Performance: {Math.round((this.props.correct/this.props.total)*100)}</p>
         </div>
         <div className="col-3 question-stats">
           <h4>Question Stats</h4>
