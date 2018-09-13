@@ -112,12 +112,11 @@
         padding: 15px;
         margin-left: 33.33333%;
         text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
     .dashboard-name{
         text-align:center;
-    }
-    .welcome{
-
     }
     .spanish-word{
         text-align: center;

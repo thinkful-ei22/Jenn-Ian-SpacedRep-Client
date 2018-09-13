@@ -44,36 +44,36 @@ export class Dashboard extends React.Component {
     }
     let correctMessage;
     let incorrectMessage;
-    let answerInput = <input type="text" name="answer" className="answer"></input>;
+    let answerInput = <input type="text" name="answer" placeholder="your guess..." className="answer ui input"></input>;
 
     if (this.props.feedback !== null && this.props.feedback.feedback === true) {
       answerInput = '';
       correctMessage =
-        <div className="success-popup" id="success">
+        <div className="ui green inverted segment" id="success">
           <h4>¡Muy bien!</h4>
           <p>The answer is {this.props.feedback.correctAnswer}.
             <br></br>
             On to the next one!
           </p>
-          <button onClick={() => this.nextQuestion()}>Next Word</button>
+          <button className="ui button large" onClick={() => this.nextQuestion()}>Next Word</button>
         </div>;
     } else if (this.props.feedback !== null && this.props.feedback.feedback === false) {
       answerInput = '';
       incorrectMessage =
-        <div className="incorrect-popup" id="incorrect">
+        <div className="ui red inverted segment" id="incorrect">
           <h4>¡Ay!</h4>
           <p>The answer is {this.props.feedback.correctAnswer}.
             <br></br>
             You'll get it next time!
           </p>
-          <button onClick={e => this.nextQuestion(e)}>Next Word</button>
+          <button className="ui button large" onClick={e => this.nextQuestion(e)}>Next Word</button>
         </div>;
 
     }
     let submitBtn;
 
     if (this.props.feedback === null) {
-      submitBtn = <button className="submit-answer" >Submit Answer</button>;
+      submitBtn = <button className="submit-answer ui button large" >Submit Answer</button>;
     }
     let score;
     if (this.props.currentUser !== null && this.props.currentUser.questionsAnswered !== 0 && this.props.total === 0) {
@@ -94,7 +94,9 @@ export class Dashboard extends React.Component {
             {sessionScore}
             <ResetBtn />
           </div>
-          <div className="word-display col-3 answering">
+          </div>
+          {/* <div className="ui horizontal segments"> */}
+          <div className="word-display col-3 answering ui raised segment">
             <h3 className="spanish-word">{spanishWord}</h3>
             <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
               {answerInput}
@@ -102,9 +104,9 @@ export class Dashboard extends React.Component {
               {incorrectMessage}
               {correctMessage}
             </form>
+            </div>
           </div>
-        </div>
-      </div>
+          // </div>
     );
   }
 }

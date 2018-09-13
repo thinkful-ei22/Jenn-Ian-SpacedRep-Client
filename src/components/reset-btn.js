@@ -13,7 +13,7 @@ export class ResetBtn extends React.Component {
 
     render() {
         return (
-            <button onClick={() => this.handleReset()}>Start a New Session</button>
+            <button className="huge ui button" onClick={() => this.handleReset()}>Start a New Session</button>
         );
     }
 }
