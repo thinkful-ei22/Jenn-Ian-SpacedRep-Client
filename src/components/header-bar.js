@@ -28,7 +28,7 @@ export class HeaderBar extends React.Component {
   render() {
     let loggingOutMessage;
     if (this.state.loggingOut === true && this.props.loggedIn) {
-      loggingOutMessage = <h3>Logging Out, See You Next Time!</h3>;
+      loggingOutMessage = <div className="logout-message"><h3 className="goodbye">¡Adios! See You Next Time!</h3></div>;
     }
 
     // Only render the log out button if we are logged in
@@ -43,14 +43,14 @@ export class HeaderBar extends React.Component {
         <div id="header" className="ui menu">
           <div className="header item">
             ¡Hablamos!
-        </div>
+          </div>
           <a className="item" href="/dashboard">
             Practice
           </a>
           <a className="item" href="/stats">
             Performance
           </a>
-            {logOutButton}
+          {logOutButton}
         </div>
         {loggingOutMessage}
       </div>

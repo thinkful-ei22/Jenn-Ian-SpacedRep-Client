@@ -1,0 +1,37 @@
+/* colors 
+
+blue #264653
+green #2A9D8F
+yellow #E9C46A
+orange #F4A261
+red #E76F51
+*/
+
+/* ========log out popup ============ */
+.logout-message{
+    position: absolute;
+    margin-top: 105px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 100%;
+  
+}
+.goodbye{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 10px;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 20px;
+    background-color: #E76F51;
+    box-shadow: 1px 1px 5px;
+}
+
+/* ============= header menu =============== */
+.ui.inverted.menu{
+    background-color: #2A9D8F;
+    font-size: 18px;
+}

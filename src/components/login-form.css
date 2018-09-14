@@ -1,0 +1,20 @@
+/* colors 
+
+blue #264653
+green #2A9D8F
+yellow #E9C46A
+orange #F4A261
+red #E76F51
+*/
+
+.login-form{
+    background-color: #2A9D8F;
+}
+
+.input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.login-button{
+    margin-bottom: 10px;
+}

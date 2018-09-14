@@ -11,7 +11,7 @@ import Welcome from './welcome';
 
 export class Dashboard extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       searchBtnDisabled: true
     };
@@ -36,19 +36,19 @@ export class Dashboard extends React.Component {
     if (e.target.value !== '') {
       this.setState({
         searchBtnDisabled: false
-      })
+      });
     } else {
       this.setState({
         searchBtnDisabled: true
-      })
+      });
     }
   }
 
   render() {
     let disabled = true;
     if(this.state.searchBtnDisabled === false) {
-        disabled = false
-    };
+      disabled = false;
+    }
 
     let spanishWord;
     if (this.props.currentQuestion === null) {
@@ -72,7 +72,7 @@ export class Dashboard extends React.Component {
         <HeaderBar />
         <Welcome />
         {/* <div className="ui horizontal segments"> */}
-        <div id="segment" className="word-display col-3 answering ui raised segment">
+        <div id="segment" className="ui raised segment guess">
           <h2 className="spanish-word">{spanishWord}</h2>
           <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
             {answerInput}
@@ -80,6 +80,7 @@ export class Dashboard extends React.Component {
             <ResponseBoxes/>
           </form>
         </div>
+
       </div>
       // </div>
     );
