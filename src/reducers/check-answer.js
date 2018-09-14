@@ -5,15 +5,17 @@ import {
   CLEAR_FEEDBACK,
   CLEAR_SESSION
 } from '../actions/check-answer';
+import { TOGGLE_PERFORMANCE } from '../actions/performance';
     
 const initialState = {
   feedback: null,
-  overallAnswered: null,
-  overallCorrect: null,
+  overallAnswered: 0,
+  overallCorrect: 0,
   totalAnswered: 0,
   totalCorrect:0,
   loading: false,
-  error: null
+  error: null,
+  displayPerformance: false
 };
     
 export default function checkAnswerReducer(state = initialState, action) {
@@ -56,6 +58,11 @@ export default function checkAnswerReducer(state = initialState, action) {
     return Object.assign({}, state, {
       error: action.error,
       loading: false
+    });
+  }
+  else if(action.type === TOGGLE_PERFORMANCE){
+    return Object.assign({}, state, {
+      displayPerformance: !state.displayPerformance
     });
   }
   return state;

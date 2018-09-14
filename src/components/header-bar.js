@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
 import './header-bar.css';
+import { togglePerformance } from '../actions/performance';
 
 export class HeaderBar extends React.Component {
   constructor(props) {
@@ -25,6 +26,9 @@ export class HeaderBar extends React.Component {
     }, 2000);
   }
 
+  handlePerformanceToggle(){
+    this.props.dispatch(togglePerformance());
+  }
   render() {
     let loggingOutMessage;
     if (this.state.loggingOut === true && this.props.loggedIn) {
@@ -40,14 +44,14 @@ export class HeaderBar extends React.Component {
     }
     return (
       <div>
-        <div id="header" className="ui menu">
+        <div id="header" className="ui inverted stackable menu">
           <div className="header item">
             ¡Hablamos!
           </div>
-          <a className="item" href="/dashboard">
+          <a className="item" onClick={() => this.handlePerformanceToggle()}>
             Practice
           </a>
-          <a className="item" href="/stats">
+          <a className="item" onClick={() => this.handlePerformanceToggle()}>
             Performance
           </a>
           {logOutButton}

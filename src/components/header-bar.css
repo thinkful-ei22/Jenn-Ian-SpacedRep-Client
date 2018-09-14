@@ -31,7 +31,7 @@ red #E76F51
 }
 
 /* ============= header menu =============== */
-.ui.inverted.menu{
+.ui.inverted.stackable.menu{
     background-color: #2A9D8F;
-    font-size: 18px;
+    color: white;
 }

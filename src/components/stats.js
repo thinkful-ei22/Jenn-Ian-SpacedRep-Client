@@ -8,6 +8,7 @@ import './stats.css';
 export class StatsPage extends React.Component {
   componentDidMount(){
     this.props.dispatch(fetchQuestion(this.props.userId));
+
     // add table sort
   }
   render(){
@@ -28,8 +29,6 @@ export class StatsPage extends React.Component {
     }
     return (
       <div>
-        <HeaderBar/>
-        <h1 className="title">{this.props.name}'s Performance</h1>
         <div className="overall">
           <h2>Overall Performance</h2>
           <table id="overall-performance" className="ui collapsing table ui striped table">
@@ -89,14 +88,15 @@ export class StatsPage extends React.Component {
   }
 }
 
+
 const mapStateToProps = state => {
   return {
     currentUser: state.auth.currentUser,
     name: state.auth.currentUser.firstName,
     total: state.checkAnswer.totalAnswered,
     correct: state.checkAnswer.totalCorrect,
-    overallAnswered: state.checkAnswer.overallAnswered,
-    overallCorrect: state.checkAnswer.overallCorrect,
+    overallAnswered: state.auth.currentUser.questionsAnswered,
+    overallCorrect: state.auth.currentUser.questionsCorrect,
     questionList: state.questions.questionList,
     userId: state.auth.currentUser._id
   };

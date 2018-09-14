@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth';
 import checkAnswerReducer from './reducers/check-answer';
-import protectedDataReducer from './reducers/protected-data';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 import questionReducer from './reducers/questions';
 
@@ -12,7 +11,6 @@ const store = createStore(
   combineReducers({
     form: formReducer,
     auth: authReducer,
-    protectedData: protectedDataReducer,
     questions: questionReducer,
     checkAnswer: checkAnswerReducer
   }),

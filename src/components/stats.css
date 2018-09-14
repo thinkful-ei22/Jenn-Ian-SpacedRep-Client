@@ -9,6 +9,7 @@ red #E76F51
 #overall-performance, #session-performance, #word-performance {
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 .word{
     background-color: #E9C46A;
@@ -18,6 +19,7 @@ red #E76F51
     margin-top: 10px;
     padding: 10px;
     border-radius: 5px;
+    text-align: center;
 }
 .session{
     background-color: #F4A261;
@@ -27,6 +29,7 @@ red #E76F51
     margin-top: 10px;
     padding: 10px;
     border-radius: 5px;
+    text-align: center;
 }
 .overall{
     background-color: #E76F51;
@@ -36,6 +39,7 @@ red #E76F51
     margin-top: 10px;
     padding: 10px;
     border-radius: 5px;
+    text-align: center;
 }
 .title{
     color:white;

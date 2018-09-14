@@ -1,0 +1,26 @@
+.progress-box{
+    display: inline-flex;
+    width:100%;
+    margin-bottom: 15px;
+}
+.overall-score{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 20%;
+    margin-right: 5%;
+    width: 25%;
+    color:white;
+    text-align: center;
+}
+.session-score{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left:5%;
+    width: 25%;
+    color:white;
+    text-align: center;
+}
+
+.dashboard{
+    width:100%;
+}

@@ -7,6 +7,7 @@ import './dashboard.css';
 import HeaderBar from './header-bar';
 import ResponseBoxes from './response-boxes';
 import Welcome from './welcome';
+import StatsPage from './stats';
 
 
 export class Dashboard extends React.Component {
@@ -28,7 +29,7 @@ export class Dashboard extends React.Component {
 
     this.setState({
       searchBtnDisabled: true
-    })
+    });
     this.props.dispatch(checkAnswer(answerObj, this.props.userId));
   }
 
@@ -45,6 +46,12 @@ export class Dashboard extends React.Component {
   }
 
   render() {
+
+    let performance;
+    if(this.props.display === true){
+      performance = <StatsPage/>;
+    }
+
     let disabled = true;
     if(this.state.searchBtnDisabled === false) {
       disabled = false;
@@ -71,18 +78,18 @@ export class Dashboard extends React.Component {
       <div>
         <HeaderBar />
         <Welcome />
-        {/* <div className="ui horizontal segments"> */}
-        <div id="segment" className="ui raised segment guess">
-          <h2 className="spanish-word">{spanishWord}</h2>
-          <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
-            {answerInput}
-            {submitBtn}
-            <ResponseBoxes/>
-          </form>
+        {performance}
+        <div className="ui grid">
+          <div id="segment" className="ui raised segment guess">
+            <h2 className="spanish-word">{spanishWord}</h2>
+            <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
+              {answerInput}
+              {submitBtn}
+              <ResponseBoxes/>
+            </form>
+          </div>
         </div>
-
       </div>
-      // </div>
     );
   }
 }
@@ -93,6 +100,7 @@ const mapStateToProps = state => {
     currentUser: state.auth.currentUser,
     userId: state.auth.currentUser._id,
     feedback: state.checkAnswer.feedback,
+    display: state.checkAnswer.displayPerformance
   };
 };
 
