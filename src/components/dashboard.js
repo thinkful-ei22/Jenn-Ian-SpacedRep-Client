@@ -60,10 +60,10 @@ export class Dashboard extends React.Component {
     }
     let sessionScore;
     if (isNaN((this.props.correct / this.props.total) * 100)) {
-      sessionScore = <h3>Your Session Score is {`${0}%`}</h3>;
+      sessionScore = <h3 className="session-score">Your Session Score is {`${0}%`}</h3>;
     }
     else if (!isNaN((this.props.correct / this.props.total) * 100)) {
-      sessionScore = <h3>Your Session Score is {this.props.correct} out of {this.props.total} or {`${Math.round((this.props.correct / this.props.total) * 100)}%`}</h3>;
+      sessionScore = <h3 className="session-score">Your Session Score is {this.props.correct} out of {this.props.total} or {`${Math.round((this.props.correct / this.props.total) * 100)}%`}</h3>;
     }
     let correctMessage;
     let incorrectMessage;
@@ -74,7 +74,7 @@ export class Dashboard extends React.Component {
       correctMessage =
         <div className="ui green inverted segment" id="success">
           <h3>¡Muy bien!</h3>
-          <p>The answer is {this.props.feedback.correctAnswer}.
+          <p>The answer is "{this.props.feedback.correctAnswer}".
             <br></br>
             On to the next one!
           </p>
@@ -85,7 +85,7 @@ export class Dashboard extends React.Component {
       incorrectMessage =
         <div className="ui red inverted segment" id="incorrect">
           <h3>¡Ay!</h3>
-          <p>The answer is {this.props.feedback.correctAnswer}.
+          <p>The answer is "{this.props.feedback.correctAnswer}".
             <br></br>
             You'll get it next time!
           </p>
@@ -113,13 +113,15 @@ export class Dashboard extends React.Component {
         <div className="dashboard row">
           <div id="welcome" className="dashboard-name">
             <h1 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h1>
-            <h3>Your Overall Score is {score} %</h3>
-            {sessionScore}
+            <div className="progress-box">
+              <h3 className="overall-score">Your Overall Score is {score} %</h3>
+              {sessionScore}
+            </div>
             <ResetBtn />
           </div>
         </div>
         {/* <div className="ui horizontal segments"> */}
-        <div id="segment" className="word-display col-3 answering ui raised segment">
+        <div id="segment" className="ui raised segment guess">
           <h2 className="spanish-word">{spanishWord}</h2>
           <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
             {answerInput}
@@ -128,6 +130,7 @@ export class Dashboard extends React.Component {
             {correctMessage}
           </form>
         </div>
+
       </div>
       // </div>
     );

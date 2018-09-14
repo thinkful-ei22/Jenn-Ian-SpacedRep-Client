@@ -40,17 +40,17 @@ export class HeaderBar extends React.Component {
     }
     return (
       <div>
-        <div className="ui jungleGreen inverted menu">
+        <div className="ui inverted menu">
           <div className="header item">
             ¡Hablamos!
-        </div>
+          </div>
           <a className="item" href="/dashboard">
             Practice
           </a>
           <a className="item" href="/stats">
             Performance
           </a>
-            {logOutButton}
+          {logOutButton}
         </div>
         {loggingOutMessage}
       </div>

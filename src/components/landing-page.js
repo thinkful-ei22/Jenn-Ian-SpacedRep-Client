@@ -9,14 +9,13 @@ export function LandingPage(props) {
   if (props.loggedIn) {
     return <Redirect to="/dashboard" />;
   }
-//want the sombrero to appear above the welcome and to change the color to yellow
   return (
     <div className="home col-2">
-      <div className="ui huge header">  
-        <img className="ui image sombrero" src="https://th.seaicons.com/wp-content/uploads/2015/11/Cultures-Sombrero-icon.png" alt="hat"/>
+      <div className="ui huge icon header">
         <h1 className="content welcome">
           ¡Bienvenido!
-        </h1>
+        </h1>  
+        <img className="ui image sombrero" src="https://th.seaicons.com/wp-content/uploads/2015/11/Cultures-Sombrero-icon.png" alt="hat"/>
       </div>
       <p className="description">Looking to take your Spanish to the next level?  <span className="app-name">¡Hablamos!</span> uses scientifically proven learning techniques to help you learn Spanish in no time!</p>
       <div id="segment" className="ui raised segment login">

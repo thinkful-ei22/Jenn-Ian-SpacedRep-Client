@@ -7,6 +7,7 @@ orange #F4A261
 red #E76F51
 */
 
+/* ========log out popup ============ */
 .logout-message{
     position: absolute;
     margin-top: 105px;
@@ -16,7 +17,6 @@ red #E76F51
     width: 100%;
   
 }
-
 .goodbye{
     text-align: center;
     margin-left: auto;
@@ -26,9 +26,11 @@ red #E76F51
     padding-top: 3%;
     padding-bottom: 3%;
     font-size: 20px;
-    background-color: #E9C46A;
+    background-color: #E76F51;
     box-shadow: 1px 1px 5px;
 }
+
+/* ============= header menu =============== */
 .ui.inverted.menu{
     background-color: #2A9D8F;
     font-size: 18px;

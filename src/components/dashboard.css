@@ -10,13 +10,15 @@ red #E76F51
     text-align: center;
 }
 #welcome {
-    margin: 80px;
+    margin-top: 60px;
+    margin-bottom: 20px;
 }
 
 #segment {
     width: 400px;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
+   
 }
 
 #segment .input {
@@ -24,5 +26,35 @@ red #E76F51
     width: 250px;
     font-size: 25px;
     margin-bottom: 15px;
-
+}
+.progress-box{
+    display: inline-flex;
+    width:100%;
+    margin-bottom: 15px;
+}
+.overall-score{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 20%;
+    margin-right: 5%;
+    width: 25%;
+    color:white;
+    text-align: center;
+}
+.session-score{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left:5%;
+    width: 25%;
+    color:white;
+    text-align: center;
+}
+#incorrect{
+    border:2px solid black;
+}
+#success{
+    border:2px solid black;
+}
+.ui.raised.segment.guess{
+    background-color: #E9C46A;
 }

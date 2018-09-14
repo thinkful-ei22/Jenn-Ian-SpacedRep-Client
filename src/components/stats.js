@@ -19,7 +19,7 @@ export class StatsPage extends React.Component {
             <td>{question.spanish}</td>
             <td>{question.correctCount}</td>
             <td>{question.incorrectCount}</td>
-            <td>{Math.round(question.correctCount/(question.correctCount+question.incorrectCount))}</td>
+            <td>{isNaN(Math.round(question.correctCount/(question.correctCount+question.incorrectCount)*100))? 0 : Math.round(question.correctCount/(question.correctCount+question.incorrectCount)*100)}%</td>
           </tr>
         );
       });
@@ -29,55 +29,61 @@ export class StatsPage extends React.Component {
     return (
       <div>
         <HeaderBar/>
-        <h1>{this.props.name}'s Performance</h1>
-        <h2>Overall Performance</h2>
-        <table id="overall-performance" className="ui collapsing table ui striped table">
-          <thead>
-            <tr>
-              <th>Questions Answered</th>
-              <th>Correct Guesses</th>
-              <th>Incorrect Guesses</th>
-              <th>Performance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <td>{this.props.overallAnswered}</td>
-            <td>{this.props.overallCorrect}</td>
-            <td>{this.props.overallAnswered - this.props.overallCorrect}</td>
-            <td>{Math.round((this.props.overallCorrect/this.props.overallAnswered)*100)}</td>
-          </tbody>
-        </table>
-        <h2>Current Session Performance</h2>
-        <table id="session-performance" className="ui collapsing table ui striped table">
-          <thead>
-            <tr>
-              <th>Questions Answered</th>
-              <th>Correct Guesses</th>
-              <th>Incorrect Guesses</th>
-              <th>Performance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <td>{this.props.total}</td>
-            <td>{this.props.correct}</td>
-            <td>{this.props.total - this.props.correct}</td>
-            <td>{Math.round((this.props.correct/this.props.total)*100)}</td>
-          </tbody>
-        </table>
-        <h2>Performance Per Word</h2>
-        <table id="word-performance" className="ui sortable celled table ui collapsing table ui striped table">
-          <thead>
-            <tr>
-              <th className="sorted descending">Word</th>
-              <th>Correct Guesses</th>
-              <th>Incorrect Guesses</th>
-              <th>Performance</th>
-            </tr>
-          </thead>
-          <tbody>
-            {questionScores}
-          </tbody>
-        </table>
+        <h1 className="title">{this.props.name}'s Performance</h1>
+        <div className="overall">
+          <h2>Overall Performance</h2>
+          <table id="overall-performance" className="ui collapsing table ui striped table">
+            <thead>
+              <tr>
+                <th>Questions Answered</th>
+                <th>Correct Guesses</th>
+                <th>Incorrect Guesses</th>
+                <th>Performance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <td>{this.props.overallAnswered}</td>
+              <td>{this.props.overallCorrect}</td>
+              <td>{this.props.overallAnswered - this.props.overallCorrect}</td>
+              <td>{isNaN(Math.round((this.props.overallCorrect/this.props.overallAnswered)*100)) ? 0 : Math.round((this.props.overallCorrect/this.props.overallAnswered)*100)}%</td>
+            </tbody>
+          </table>
+        </div>
+        <div className="session">
+          <h2>Current Session Performance</h2>
+          <table id="session-performance" className="ui collapsing table ui striped table">
+            <thead>
+              <tr>
+                <th>Questions Answered</th>
+                <th>Correct Guesses</th>
+                <th>Incorrect Guesses</th>
+                <th>Performance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <td>{this.props.total}</td>
+              <td>{this.props.correct}</td>
+              <td>{this.props.total - this.props.correct}</td>
+              <td>{(isNaN(Math.round((this.props.correct/this.props.total)*100))) ? 0 : Math.round(((this.props.correct/this.props.total)*100))}%</td>
+            </tbody>
+          </table>
+        </div>
+        <div className="word">
+          <h2>Performance Per Word</h2>
+          <table id="word-performance" className="ui sortable celled table ui collapsing table ui striped table">
+            <thead>
+              <tr>
+                <th className="sorted descending">Word</th>
+                <th>Correct Guesses</th>
+                <th>Incorrect Guesses</th>
+                <th>Performance</th>
+              </tr>
+            </thead>
+            <tbody>
+              {questionScores}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

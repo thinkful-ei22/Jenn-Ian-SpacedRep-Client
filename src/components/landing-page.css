@@ -28,10 +28,10 @@ red #E76F51
     color: #E76F51;
 }
 #segment {
-    width: 400px;
+    width: 40%;
     margin-left: auto;
     margin-right: auto;
-    background-color: #2A9D8F;
+    
 }
 .register-link{
     color: white;
@@ -39,4 +39,14 @@ red #E76F51
 }
 .home{
     padding: 20px;
+}
+.ui.raised.segment.login{
+    background-color: #2A9D8F;
+}
+
+.ui.image.sombrero{
+    background-color: #2A9D8F;
+    border-radius: 50%;
+    padding: 5px;
+
 }

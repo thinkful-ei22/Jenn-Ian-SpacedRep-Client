@@ -10,3 +10,33 @@ red #E76F51
     margin-left: auto;
     margin-right: auto;
 }
+.word{
+    background-color: #E9C46A;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.session{
+    background-color: #F4A261;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.overall{
+    background-color: #E76F51;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.title{
+    color:white;
+}
