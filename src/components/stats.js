@@ -7,13 +7,12 @@ import './stats.css';
 
 export class StatsPage extends React.Component {
   componentDidMount(){
-    this.props.dispatch(fetchQuestion(this.props.userId));
-
     // add table sort
   }
   render(){
+    console.log(this.props.currentUser);
     let questionScores;
-    if(this.props.currentUser !== null){
+    if(this.props.currentUser !== null && this.props.display === true){
       questionScores = this.props.questionList.map((question, index) => {
         return(
           <tr key={index}>
@@ -98,7 +97,8 @@ const mapStateToProps = state => {
     overallAnswered: state.auth.currentUser.questionsAnswered,
     overallCorrect: state.auth.currentUser.questionsCorrect,
     questionList: state.questions.questionList,
-    userId: state.auth.currentUser._id
+    userId: state.auth.currentUser._id,
+    display: state.checkAnswer.displayPerformance
   };
 };
 
