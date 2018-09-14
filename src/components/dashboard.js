@@ -10,7 +10,7 @@ import HeaderBar from './header-bar';
 
 export class Dashboard extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       searchBtnDisabled: true
     };
@@ -38,19 +38,19 @@ export class Dashboard extends React.Component {
     if (e.target.value !== '') {
       this.setState({
         searchBtnDisabled: false
-      })
+      });
     } else {
       this.setState({
         searchBtnDisabled: true
-      })
+      });
     }
   }
 
   render() {
     let disabled = true;
     if(this.state.searchBtnDisabled === false) {
-        disabled = false
-    };
+      disabled = false;
+    }
 
     let spanishWord;
     if (this.props.currentQuestion === null) {

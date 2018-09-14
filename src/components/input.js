@@ -1,4 +1,5 @@
 import React from 'react';
+import './input.css';
 
 export default class Input extends React.Component {
   componentDidUpdate(prevProps) {
@@ -12,6 +13,9 @@ export default class Input extends React.Component {
     if (this.props.meta.touched && this.props.meta.error) {
       error = <div className="form-error">{this.props.meta.error}</div>;
     }
+    else{
+      error = <div className="form-error"></div>;
+    }
 
     let warning;
     if (this.props.meta.touched && this.props.meta.warning) {
@@ -19,15 +23,18 @@ export default class Input extends React.Component {
         <div className="form-warning">{this.props.meta.warning}</div>
       );
     }
+    else{
+      warning = <div className='form-warning'></div>;
+    }
 
     return (
       <div className="form-input">
-        <label htmlFor={this.props.input.name}>
+        <label className="form-label" htmlFor={this.props.input.name}>
           {this.props.label}
           {error}
           {warning}
         </label>
-        <input
+        <input className="form-input"
           {...this.props.input}
           id={this.props.input.name}
           type={this.props.type}

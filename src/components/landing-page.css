@@ -1,0 +1,42 @@
+/* colors 
+
+blue #264653
+green #2A9D8F
+yellow #E9C46A
+orange #F4A261
+red #E76F51
+*/
+
+.description{
+    width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    color: #E9C46A;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.app-name{
+    font-style: italic;
+    color: #E76F51;
+}
+
+.sombrero{
+    color: #E9C46A;
+}
+.welcome{
+    color: #E76F51;
+}
+#segment {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #2A9D8F;
+}
+.register-link{
+    color: white;
+    font-size: 16px;
+}
+.home{
+    padding: 20px;
+}
