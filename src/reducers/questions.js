@@ -19,7 +19,6 @@ export default function questionReducer(state = initialState, action) {
     });
   }
   else if (action.type === FETCH_QUESTION_SUCCESS) {
-    console.log(action.question);
     return Object.assign({}, state, {
       currentQuestion: action.question.firstQuestion,
       questionList: [...state.questionList, ...action.question.questions],

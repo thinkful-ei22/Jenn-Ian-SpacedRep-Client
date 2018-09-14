@@ -40,7 +40,7 @@ export class HeaderBar extends React.Component {
     }
     return (
       <div>
-        <div className="ui menu">
+        <div id="header" className="ui menu">
           <div className="header item">
             ¡Hablamos!
         </div>
