@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { fetchQuestion } from '../actions/questions';
-import HeaderBar from './header-bar';
 import './stats.css';
 
 export class StatsPage extends React.Component {
@@ -10,7 +8,6 @@ export class StatsPage extends React.Component {
     // add table sort
   }
   render(){
-    console.log(this.props.currentUser);
     let questionScores;
     if(this.props.currentUser !== null && this.props.display === true){
       questionScores = this.props.questionList.map((question, index) => {
