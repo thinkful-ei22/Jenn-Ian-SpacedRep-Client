@@ -100,7 +100,7 @@ const mapStateToProps = state => {
     currentUser: state.auth.currentUser,
     userId: state.auth.currentUser._id,
     feedback: state.checkAnswer.feedback,
-    display: state.checkAnswer.displayPerformance
+    display: state.checkAnswer.displayPerformance,
   };
 };
 

@@ -43,7 +43,8 @@ export default function checkAnswerReducer(state = initialState, action) {
         totalCorrect: state.totalCorrect+1,
         error: null,
         overallAnswered: action.feedback.questionsAnswered,
-        overallCorrect: action.feedback.questionsCorrect
+        overallCorrect: action.feedback.questionsCorrect,
+        loading: false
       }); 
     }
     return Object.assign({}, state, {
