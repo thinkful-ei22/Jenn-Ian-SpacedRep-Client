@@ -13,7 +13,7 @@ red #E76F51
 }
 .word{
     background-color: #E9C46A;
-    width: 50%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -24,7 +24,7 @@ red #E76F51
 }
 .session{
     background-color: #F4A261;
-    width: 50%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -34,7 +34,7 @@ red #E76F51
 }
 .overall{
     background-color: #E76F51;
-    width: 50%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;

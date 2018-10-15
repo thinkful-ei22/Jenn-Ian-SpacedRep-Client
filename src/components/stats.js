@@ -27,7 +27,7 @@ export class StatsPage extends React.Component {
       <div>
         <div className="overall">
           <h2>Overall Performance</h2>
-          <table id="overall-performance" className="ui collapsing table ui striped table">
+          <table id="overall-performance" className="ui celled table ui collapsing table ui striped table">
             <thead>
               <tr>
                 <th>Questions Answered</th>
@@ -46,7 +46,7 @@ export class StatsPage extends React.Component {
         </div>
         <div className="session">
           <h2>Current Session Performance</h2>
-          <table id="session-performance" className="ui collapsing table ui striped table">
+          <table id="session-performance" className="ui celled table ui collapsing table ui striped table">
             <thead>
               <tr>
                 <th>Questions Answered</th>
