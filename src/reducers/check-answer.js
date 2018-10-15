@@ -15,7 +15,7 @@ const initialState = {
   totalCorrect:0,
   loading: false,
   error: null,
-  displayPerformance: false
+  displayPerformance: ''
 };
     
 export default function checkAnswerReducer(state = initialState, action) {
@@ -62,9 +62,10 @@ export default function checkAnswerReducer(state = initialState, action) {
     });
   }
   else if(action.type === TOGGLE_PERFORMANCE){
-    return Object.assign({}, state, {
-      displayPerformance: !state.displayPerformance
-    });
+    console.log(action.display);
+    // return Object.assign({}, state, {
+    //   displayPerformance: !state.displayPerformance
+    // });
   }
   return state;
 }
