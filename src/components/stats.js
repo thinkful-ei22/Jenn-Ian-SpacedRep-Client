@@ -9,7 +9,7 @@ export class StatsPage extends React.Component {
   }
   render(){
     let questionScores;
-    if(this.props.currentUser !== null && this.props.display === true){
+    if(this.props.currentUser !== null && this.props.display === 'performance'){
       questionScores = this.props.questionList.map((question, index) => {
         return(
           <tr key={index}>
@@ -65,10 +65,10 @@ export class StatsPage extends React.Component {
         </div>
         <div className="word">
           <h2>Performance Per Word</h2>
-          <table id="word-performance" className="ui sortable celled table ui collapsing table ui striped table">
+          <table id="word-performance" className="ui celled table ui collapsing table ui striped table">
             <thead>
               <tr>
-                <th className="sorted descending">Word</th>
+                <th>Word</th>
                 <th>Correct Guesses</th>
                 <th>Incorrect Guesses</th>
                 <th>Performance</th>
