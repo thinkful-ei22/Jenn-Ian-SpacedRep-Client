@@ -27,7 +27,10 @@ export class HeaderBar extends React.Component {
   }
 
   handlePerformanceToggle(){
-    this.props.dispatch(togglePerformance());
+    this.props.dispatch(togglePerformance('performance'));
+  }
+  handlePracticeToggle(){
+    this.props.dispatch(togglePerformance('practice'));
   }
   render() {
     let loggingOutMessage;
@@ -48,7 +51,7 @@ export class HeaderBar extends React.Component {
           <div className="header item">
             ¡Hablamos!
           </div>
-          <a className="item" onClick={() => this.handlePerformanceToggle()}>
+          <a className="item" onClick={() => this.handlePracticeToggle()}>
             Practice
           </a>
           <a className="item" onClick={() => this.handlePerformanceToggle()}>

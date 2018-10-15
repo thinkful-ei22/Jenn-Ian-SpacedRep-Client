@@ -48,7 +48,7 @@ export class Dashboard extends React.Component {
   render() {
 
     let performance;
-    if(this.props.display === true){
+    if(this.props.display === 'performance'){
       performance = <StatsPage/>;
     }
 
@@ -73,22 +73,24 @@ export class Dashboard extends React.Component {
     if (this.props.feedback === null) {
       submitBtn = <button disabled={disabled} className="submit-answer ui button large" >Submit Answer</button>;
     }
-
+    if(this.props.display === 'practice'){
+      performance = 
+      <div className="ui grid">
+        <div id="segment" className="ui raised segment guess">
+          <h2 className="spanish-word">{spanishWord}</h2>
+          <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
+            {answerInput}
+            {submitBtn}
+            <ResponseBoxes/>
+          </form>
+        </div>
+      </div>;
+    }
     return (
       <div>
         <HeaderBar />
         <Welcome />
         {performance}
-        <div className="ui grid">
-          <div id="segment" className="ui raised segment guess">
-            <h2 className="spanish-word">{spanishWord}</h2>
-            <form onSubmit={(e) => this.handleAnswerSubmit(e)}>
-              {answerInput}
-              {submitBtn}
-              <ResponseBoxes/>
-            </form>
-          </div>
-        </div>
       </div>
     );
   }
