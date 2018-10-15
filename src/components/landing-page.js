@@ -9,6 +9,17 @@ export function LandingPage(props) {
   if (props.loggedIn) {
     return <Redirect to="/dashboard" />;
   }
+  if(props.loading){
+    return(
+      <div className="home row">
+        <div className="ui huge icon header">
+          <h1 className="content welcome">
+          Please wait...
+          </h1>  
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="home row">
       <div className="ui huge icon header">
@@ -32,6 +43,7 @@ export function LandingPage(props) {
     
 const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null,
+  loading: state.auth.loading
 });
     
 export default connect(mapStateToProps)(LandingPage);
