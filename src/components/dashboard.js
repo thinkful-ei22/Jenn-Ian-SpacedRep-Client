@@ -64,7 +64,7 @@ export class Dashboard extends React.Component {
       spanishWord = this.props.currentQuestion.spanish;
     }
 
-    let answerInput = <input onChange={(e) => this.handleDisable(e)} type="text" name="answer" placeholder="your guess..." className="answer ui input"></input>;
+    let answerInput = <input onChange={(e) => this.handleDisable(e)} type="text" aria-label="guess" name="answer" placeholder="your guess..." className="answer ui input"></input>;
     if (this.props.feedback !== null) {
       answerInput = '';
     }
