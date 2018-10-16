@@ -22,7 +22,7 @@ export class Welcome extends React.Component {
       sessionScore = <h3 className="session-score">Your Session Score is {this.props.correct} out of {this.props.total} or <span>{`${Math.round((this.props.correct / this.props.total) * 100)}%`}</span></h3>;
     }
     return (
-      <div className="ui grid row">
+      <div role="region" className="ui grid row">
         <div id="welcome" className="dashboard-name">
           <h1 className="welcome">Welcome to ¡Hablamos! {this.props.name}</h1>
           <div className="progress-box">

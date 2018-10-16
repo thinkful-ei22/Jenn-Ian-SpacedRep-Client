@@ -46,7 +46,7 @@ export class HeaderBar extends React.Component {
       );
     }
     return (
-      <div>
+      <div role="navigation">
         <div id="header" className="ui inverted stackable menu">
           <div className="header item">
             ¡Hablamos!
