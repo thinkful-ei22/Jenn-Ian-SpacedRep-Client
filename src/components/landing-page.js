@@ -29,7 +29,7 @@ export function LandingPage(props) {
         <img className="ui image sombrero" src="https://th.seaicons.com/wp-content/uploads/2015/11/Cultures-Sombrero-icon.png" alt="hat"/>
       </div>
       <div className="ui grid">
-        <p className="description">Looking to take your Spanish to the next level?  <span className="app-name">¡Hablamos!</span> uses scientifically proven learning techniques to help you learn Spanish in no time!</p>
+        <p className="description">Looking to take your Spanish to the next level?<br></br><span className="app-name">¡Hablamos!</span> uses scientifically proven learning techniques to<br></br> help you learn Spanish in no time!</p>
       </div>
       <div className="ui grid">
         <div id="segment" className="ui raised segment login">
