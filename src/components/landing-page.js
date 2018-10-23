@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import './landing-page.css';
 import LoginForm from './login-form';
+import hatImage from '../images/sombrero-icon.png';
 
 export function LandingPage(props) {
   // If we are logged in redirect straight to the user's dashboard
@@ -26,7 +27,7 @@ export function LandingPage(props) {
         <h1 className="content welcome">
           ¡Bienvenido!
         </h1>  
-        <img className="ui image sombrero" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/sombrero-2-552599.png" alt="hat"/>
+        <img className="ui image sombrero" src={hatImage} alt="hat"/>
       </div>
       <div className="ui grid">
         <p className="description">Looking to take your Spanish to the next level?<br></br><span className="app-name">¡Hablamos!</span> uses scientifically proven learning techniques to<br></br> help you learn Spanish in no time!</p>
