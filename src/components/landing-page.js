@@ -26,7 +26,7 @@ export function LandingPage(props) {
         <h1 className="content welcome">
           ¡Bienvenido!
         </h1>  
-        <img className="ui image sombrero" src="https://th.seaicons.com/wp-content/uploads/2015/11/Cultures-Sombrero-icon.png" alt="hat"/>
+        <img className="ui image sombrero" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/sombrero-2-552599.png" alt="hat"/>
       </div>
       <div className="ui grid">
         <p className="description">Looking to take your Spanish to the next level?<br></br><span className="app-name">¡Hablamos!</span> uses scientifically proven learning techniques to<br></br> help you learn Spanish in no time!</p>
