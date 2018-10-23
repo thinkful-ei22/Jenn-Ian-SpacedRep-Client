@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import RegistrationForm from './registration-form';
+import hatImage from '../images/sombrero-icon.png';
 import './registration-page.css';
 
 export function RegistrationPage(props) {
@@ -27,7 +28,7 @@ export function RegistrationPage(props) {
         <h1 className="content welcome">
           ¡Bienvenido!
         </h1>  
-        <img className="ui image sombrero" src="https://th.seaicons.com/wp-content/uploads/2015/11/Cultures-Sombrero-icon.png" alt="hat"/>
+        <img className="ui image sombrero" src={hatImage} alt="hat"/>
       </div>
       <div classname="ui grid">
         <p className="description">Looking to take your Spanish to the next level?  <span className="app-name">¡Hablamos!</span> uses scientifically proven learning
