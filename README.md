@@ -5,6 +5,9 @@ A faster way to learn Spanish.  Utitlizing a spaced repetition algorithm to help
 ## Link to deployed version on Heroku:
 https://hablamos-ji.herokuapp.com/
 
+## Link to Server Repo
+https://github.com/thinkful-ei22/jenn-ian-spacedRep-server
+
 ## Features
 After creating an account, a user can login, and start learning Spanish.  The user will be presented with a Spanish word, and they will have to enter the correct English translation.  The app will keep track of how many correct answers there are, sorting the words the user gets wrong towards the front of the deck and the ones the user gets correct towards the back.  This method ensures that the user spends more time practicing the words they do not know well.  A user can also access a page that displays their statistcs.
 
